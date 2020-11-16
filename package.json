@@ -1,0 +1,30 @@
+{
+  "name": "sesscook",
+  "version": "1.0.0",
+  "description": "A simple local session manager with simplest methods to easily manage local individual user session via signed cookies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ranjanistic/sesscook.git"
+  },
+  "keywords": [
+    "session",
+    "cookies",
+    "localsession",
+    "session",
+    "manager"
+  ],
+  "author": "Priyanshu Ranjan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ranjanistic/sesscook/issues"
+  },
+  "homepage": "https://github.com/ranjanistic/sesscook#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
