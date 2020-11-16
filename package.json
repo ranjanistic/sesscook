@@ -1,6 +1,6 @@
 {
   "name": "sesscook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple local session manager with simplest methods to easily manage local individual user session via signed cookies",
   "main": "index.js",
   "scripts": {
