@@ -49,6 +49,12 @@ class Sesscook{
   }
 }
 
+/**
+ * @param {Express} app The object of express(), or express.Router() object.
+ * @param {String} sessionsecret A secret phrase to act as a key for the masked session token.
+ * @param {String} sessionkey (Optional) A phrase to indicate the token.
+ * @param {Number} expirytimeinseconds Seconds for which a session token is valid after creation. Defaults to 10 years.
+ */
 const sesscook = (app,sessionsecret = "NASFDJLSJKV3U0R892U3R.Zc;#ri*uiiifyhoo>lvpqid",sessionkey = "sesscookkey",expirytimeinseconds = 0) => new Sesscook(app,sessionsecret,sessionkey,expirytimeinseconds);
 
 module.exports = sesscook;

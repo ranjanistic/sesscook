@@ -1,10 +1,11 @@
 {
   "name": "sesscook",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple local session manager with simplest methods to easily manage local individual user session via signed cookies",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm i cookie-parser && npm i jsonwebtoken && exit 0"
   },
   "repository": {
     "type": "git",
