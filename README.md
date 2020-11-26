@@ -18,12 +18,20 @@ const express = require("express");
 const app = express();
 const sesscook = require("sesscook");
 
-const session = sesscook(app,"somesessionsecret","somesessionpublickey",60*60*2); //last param is validity in seconds.
+const session = sesscook(
+  app, //Express.Application object
+  "somesessionsecret",  //private key
+  60*60*2,  //validity in seconds (here 2 hours), defaults  to 10 years.
+  "somesessionpublickey" //optional public key.
+);
+
+//an optional fifth parameter (boolean) is also present, but not recommended to set true, as session will only be created on https protocol then.
+
 ```
 
 the following methods can be accessed via ```session``` object.
 
-- session.create(```response```,```sessiondata```,```secured```)
+- session.create(```response```,```sessiondata```)
 
   This method creates a new session based on following parameters.
 
@@ -51,7 +59,7 @@ const express = require("express");
 const app = express();
 const sesscook = require("sesscook");
 
-const session = sesscook(app,"sessionsecret","sessionpublickey",60*60*2);
+const session = sesscook(app,"sessionsecret",60*60*2,"sessionpublickey");
 
 //now use session object to access Sesscook methods, wherever needed.
 
@@ -61,7 +69,14 @@ const session = sesscook(app,"sessionsecret","sessionpublickey",60*60*2);
 app.get("/login",(req,res)=>{
   ...
   //after successfull authentication
-  session.create(res,{username:"someuser",email:"someemail"});
+
+  let sessiondata = {
+    username:"someuser",
+    email:"someemail"
+  };
+
+  session.create(res,sessiondata);
+  //session is created
 });
 
 /**An endpoint which redirects to login page, if session is
@@ -70,8 +85,10 @@ session data stored using session.create() method.
 */
 app.get("/session",(req,res)=>{
   const client = session.isValid(req);
-  if(!client) return res.redirect("/login");
+  if(!client) return res.redirect("/login");  //if client is false, session is invalid.
+
   ...
+  //if session is valid, then client contains sessiondata for current valid session.
   const email = client.email;
   const username = client.username;
   ...
@@ -90,7 +107,7 @@ app.listen(8000);
 
 ```
 
-The ```session``` object is an object of unexported Sesscook class, accessed via exported sesscook method, which returns a new instance of the same.
+The ```session``` object is an object of unexported class ```Sesscook```, accessed via exported ```sesscook()``` method, which returns a new instance of the same.
 
 ## Dependencies
 

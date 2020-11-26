@@ -1,4 +1,13 @@
 
+1.1.0 / 2020-11-26
+==================
+
+* Added typescript declaration support.
+
+* Updated method parameter validation, and few changes in sequence of parameters.
+
+* See latest [example](README.md#example) on how to use.
+
 1.0.2 / 2020-11-20
 ==================
 
